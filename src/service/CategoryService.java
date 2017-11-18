@@ -11,13 +11,13 @@ import bean.Category;
  *
  * @author CHAACHAI Youssef <youssef.chaachai@gmail.com>
  */
-public class CategoryService extends AbstractFacade<CategoryService> {
+public class CategoryService extends AbstractFacade<Category> {
 
     public CategoryService() {
-        super(CategoryService.class);
+        super(Category.class);
     }
-    
-    public void addCategory(String name){
+
+    public void addCategory(String name) {
         Category category = new Category();
         category.setName(name);
         create(category);
