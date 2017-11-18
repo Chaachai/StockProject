@@ -23,8 +23,7 @@ public class Order implements Serializable {
     @Id
     private String id;
     private double quantity;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date orderDate;
+    private String orderDate;
     @ManyToOne
     private Client client;
     @ManyToOne
@@ -37,7 +36,7 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public Order(String id, double quantity, Date orderDate) {
+    public Order(String id, double quantity, String orderDate) {
         this.id = id;
         this.quantity = quantity;
         this.orderDate = orderDate;
@@ -57,14 +56,6 @@ public class Order implements Serializable {
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
     }
 
     public Client getClient() {
@@ -87,6 +78,14 @@ public class Order implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     @Override

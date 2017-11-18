@@ -31,8 +31,6 @@ public class Product implements Serializable {
     private List<Stock> stocks;
     @OneToMany(mappedBy = "product")
     private List<Order> orders;
-    @OneToMany(mappedBy = "product")
-    private List<BillRow> billRows;
 
     public Product() {
     }
@@ -102,17 +100,6 @@ public class Product implements Serializable {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    public List<BillRow> getBillRows() {
-        if (billRows == null) {
-            billRows = new ArrayList();
-        }
-        return billRows;
-    }
-
-    public void setBillRows(List<BillRow> billRows) {
-        this.billRows = billRows;
     }
 
     @Override

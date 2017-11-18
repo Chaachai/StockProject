@@ -28,8 +28,6 @@ public class Client implements Serializable {
     private String phone;
     @OneToMany(mappedBy = "client")
     private List<Order> orders;
-    @OneToMany(mappedBy = "client")
-    private List<Bill> bills;
 
     public Client() {
     }
@@ -95,17 +93,6 @@ public class Client implements Serializable {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    public List<Bill> getBills() {
-        if (bills == null) {
-            bills = new ArrayList();
-        }
-        return bills;
-    }
-
-    public void setBills(List<Bill> bills) {
-        this.bills = bills;
     }
 
     @Override
