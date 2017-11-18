@@ -24,7 +24,7 @@ public class Product implements Serializable {
     @Id
     private String id;
     private String name;
-    private String unitPrice;
+    private double unitPrice;
     @ManyToOne
     private Category category;
     @OneToMany(mappedBy = "product")
@@ -39,7 +39,7 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(String id, String name, String unitPrice) {
+    public Product(String id, String name, double unitPrice) {
         this.id = id;
         this.name = name;
         this.unitPrice = unitPrice;
@@ -61,11 +61,11 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public String getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
