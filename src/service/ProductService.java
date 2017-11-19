@@ -7,6 +7,7 @@ package service;
 
 import bean.Category;
 import bean.Product;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,36 @@ public class ProductService extends AbstractFacade<Product> {
         create(pr);
         return 1;
 
+    }
+    public List<Product> findByCriteria(String id, String Name, String idCategory) {
+        String query = "SELECT p FROM Product p WHERE 1=1";
+        if(id!=null){
+            query += " AND p.id='"+id+"'";
+        }
+        if (Name != null) {
+            query += " AND p.name='" + Name + "'";
+        }
+        
+        if (idCategory != null) {
+            query += " AND p.category.id='" + idCategory + "'";
+        }
+        
+        return getEntityManager().createQuery(query).getResultList();
+    }
+    public int DeleteByCriteria(String id, String Name, String idCategory) {
+        String query = "DELETE  FROM Product p WHERE 1=1";
+        if(id!=null){
+            query += " AND p.id='"+id+"'";
+        }
+        if (Name != null) {
+            query += " AND p.name='" + Name + "'";
+        }
+        
+        if (idCategory != null) {
+            query += " AND p.category.id='" + idCategory + "'";
+        }
+        
+        return getEntityManager().createQuery(query).executeUpdate();
     }
 
 }
