@@ -59,24 +59,6 @@ public class StoreService extends AbstractFacade<Store>{
         }
         return getEntityManager().createQuery(query).getResultList();
     }
-    public int DeleteByCriteria(String id,String name,String phone,String address, String city) {
-        String query = "DELETE  FROM Store s WHERE 1=1";
-        if(id!=null){
-            query += " AND s.id='"+id+"'";
-        }
-        if (name != null) {
-            query += " AND s.name='" + name + "'";
-        }
-        if (phone != null) {
-            query += " AND s.phone='" + phone + "' ";
-        }
-        if (address != null) {
-            query += " AND s.address='" + address + "'";
-        }
-        if (city != null) {
-            query += " AND s.city='" + city + "' ";
-        }
-        return getEntityManager().createQuery(query).executeUpdate();
-    }
+    
     
 }

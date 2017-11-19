@@ -44,7 +44,7 @@ public class OrderService extends AbstractFacade<Commande> {
         create(commande);
     }
     public List<Client> findByCriteria(String id,String MinDate,String MaxDate,String idClient,String idProduct) {
-        String query = "SELECT o FROM Order o WHERE 1=1";
+        String query = "SELECT o FROM Commande o WHERE 1=1";
         if(id!=null){
             query += " AND o.id='"+id+"'";
         }
@@ -63,42 +63,6 @@ public class OrderService extends AbstractFacade<Commande> {
         return getEntityManager().createQuery(query).getResultList();
     }
     
-   public int UpdateByCriteria(String id,String MinDate,String MaxDate,String idClient,String idProduct) {
-        String query = "UPDATE  Order o SET ";
-        
-        if (idClient != null) {
-            query += "  o.client.id='" + idClient + "'";
-        }
-        
-        if (idProduct != null) {
-            query += "  o.product.id='" + idProduct + "'";
-        }
-        if (MaxDate != null && MinDate!=null) {
-            query += "  o.orderDate BETWEEN='" + MinDate + "'AND'"+MaxDate+"'";
-        }
-        query +=" WHERE o.id='"+id+"'";
-        
-        
-        return getEntityManager().createQuery(query).executeUpdate();
-    }
-    public int DeleteByCriteria(String id,String MinDate,String MaxDate,String idClient,String idProduct) {
-        String query = "DELETE  FROM Order o WHERE 1=1";
-        if(id!=null){
-            query += " AND o.id='"+id+"'";
-        }
-        if (idClient != null) {
-            query += " AND o.client.id='" + idClient + "'";
-        }
-        
-        if (idProduct != null) {
-            query += " AND o.product.id='" + idProduct + "'";
-        }
-        if (MaxDate != null && MinDate!=null) {
-            query += " AND o.orderDate BETWEEN='" + MinDate + "'AND'"+MaxDate+"'";
-        }
-        
-        
-        return getEntityManager().createQuery(query).executeUpdate();
-    }
+   
 
 }

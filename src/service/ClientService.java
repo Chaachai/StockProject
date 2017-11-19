@@ -54,25 +54,5 @@ public class ClientService extends AbstractFacade<Client> {
         return getEntityManager().createQuery(query).getResultList();
     }
     
-    public int DeleteByCriteria(String id, String firstName, String lastName,String address,String phone) {
-        String query = "DELETE  FROM Client c WHERE 1=1";
-        if(id!=null){
-            query += " AND c.id='"+id+"'";
-        }
-        if (firstName != null) {
-            query += " AND c.firsName='" + firstName + "'";
-        }
-        
-        if (lastName != null) {
-            query += " AND c.lastName='" + lastName + "'";
-        }
-        if (address != null) {
-            query += " AND c.address='" + address + "'";
-        }
-        if (phone != null) {
-            query += " AND c.phone='" + phone + "'";
-        }
-        
-        return getEntityManager().createQuery(query).executeUpdate();
-    }
+    
 }

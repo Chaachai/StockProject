@@ -53,20 +53,5 @@ public class ProductService extends AbstractFacade<Product> {
         
         return getEntityManager().createQuery(query).getResultList();
     }
-    public int DeleteByCriteria(String id, String Name, String idCategory) {
-        String query = "DELETE  FROM Product p WHERE 1=1";
-        if(id!=null){
-            query += " AND p.id='"+id+"'";
-        }
-        if (Name != null) {
-            query += " AND p.name='" + Name + "'";
-        }
-        
-        if (idCategory != null) {
-            query += " AND p.category.id='" + idCategory + "'";
-        }
-        
-        return getEntityManager().createQuery(query).executeUpdate();
-    }
-
+    
 }
