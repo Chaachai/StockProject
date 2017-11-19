@@ -8,9 +8,9 @@
     <class>bean.Client</class>
     <class>bean.Bill</class>
     <class>bean.BillRow</class>
-    <class>bean.Order</class>
     <class>bean.User</class>
     <class>bean.Category</class>
+    <class>bean.Commande</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Stock?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

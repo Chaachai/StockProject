@@ -30,7 +30,7 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
     @OneToMany(mappedBy = "product")
-    private List<Order> orders;
+    private List<Commande> commandes;
 
     public Product() {
     }
@@ -91,15 +91,15 @@ public class Product implements Serializable {
         this.stocks = stocks;
     }
 
-    public List<Order> getOrders() {
-        if (orders == null) {
-            orders = new ArrayList();
+    public List<Commande> getCommandes() {
+        if (commandes == null) {
+            commandes = new ArrayList();
         }
-        return orders;
+        return commandes;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override

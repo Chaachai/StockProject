@@ -17,6 +17,14 @@ public class CategoryService extends AbstractFacade<Category> {
         super(Category.class);
     }
 
+    public void initDB() {
+        addCategory("Computer");
+        addCategory("Mobile Phone");
+        addCategory("Television");
+        addCategory("Printer");
+        addCategory("Camera");
+    }
+
     public void addCategory(String name) {
         Category category = new Category();
         category.setName(name);

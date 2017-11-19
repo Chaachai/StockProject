@@ -40,16 +40,26 @@ public class ProductServiceTest {
     /**
      * Test of CreateProduct method, of class ProductService.
      */
+//    @Test
+//    public void testCreateProduct() {
+//        System.out.println("CreateProduct");
+//        String id = "P01";
+//        String Name = "TOSHIBA";
+//        double unitPrice = 5000.0;
+//        String idCategory = "1";
+//        ProductService instance = new ProductService();
+//        int result = instance.createProduct(id, Name, unitPrice, idCategory);
+//        System.out.println(result);
+//    }
+
+    /**
+     * Test of initDB method, of class ProductService.
+     */
     @Test
-    public void testCreateProduct() {
-        System.out.println("CreateProduct");
-        String id = "P01";
-        String Name = "TOSHIBA";
-        double unitPrice = 5000.0;
-        String idCategory = "1";
+    public void testInitDB() {
+        System.out.println("initDB");
         ProductService instance = new ProductService();
-        int result = instance.CreateProduct(id, Name, unitPrice, idCategory);
-        System.out.println(result);
+        instance.initDB();
     }
 
 }

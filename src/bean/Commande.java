@@ -6,40 +6,43 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author CHAACHAI Youssef <youssef.chaachai@gmail.com>
  */
 @Entity
-public class Order implements Serializable {
+public class Commande implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private double quantity;
     private String orderDate;
+    private double totalPrice;
     @ManyToOne
     private Client client;
     @ManyToOne
     private Product product;
 
-    public Order() {
+    public Commande() {
     }
 
-    public Order(String id) {
+    public Commande(String id) {
         this.id = id;
     }
 
-    public Order(String id, double quantity, String orderDate) {
+    public Commande(String id, double quantity, String orderDate, double totalPrice) {
         this.id = id;
         this.quantity = quantity;
         this.orderDate = orderDate;
+        this.totalPrice = totalPrice;
     }
 
     public String getId() {
@@ -56,6 +59,22 @@ public class Order implements Serializable {
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Client getClient() {
@@ -80,14 +99,6 @@ public class Order implements Serializable {
         this.product = product;
     }
 
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -98,10 +109,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof Commande)) {
             return false;
         }
-        Order other = (Order) object;
+        Commande other = (Commande) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -110,7 +121,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", quantity=" + quantity + ", orderDate=" + orderDate + '}';
+        return "Commande{" + "id=" + id + ", quantity=" + quantity + ", orderDate=" + orderDate + ", totalPrice=" + totalPrice + '}';
     }
 
 }

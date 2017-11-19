@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author CHAACHAI Youssef <youssef.chaachai@gmail.com>
  */
-public class CategoryServiceTest {
+public class StoreServiceTest {
     
-    public CategoryServiceTest() {
+    public StoreServiceTest() {
     }
     
     @BeforeClass
@@ -37,25 +37,29 @@ public class CategoryServiceTest {
     public void tearDown() {
     }
 
-//    /**
-//     * Test of addCategory method, of class CategoryService.
-//     */
-//    @Test
-//    public void testAddCategory() {
-//        System.out.println("addCategory");
-//        String name = "Computer";
-//        CategoryService instance = new CategoryService();
-//        instance.addCategory(name);
-//    }
-
     /**
-     * Test of initDB method, of class CategoryService.
+     * Test of initBD method, of class StoreService.
      */
     @Test
-    public void testInitDB() {
-        System.out.println("initDB");
-        CategoryService instance = new CategoryService();
-        instance.initDB();
+    public void testInitBD() {
+        System.out.println("initBD");
+        StoreService instance = new StoreService();
+        instance.initBD();
     }
+
+    /**
+     * Test of createStore method, of class StoreService.
+     */
+//    @Test
+//    public void testCreateStore() {
+//        System.out.println("createStore");
+//        String storeID = "";
+//        String name = "";
+//        String address = "";
+//        String city = "";
+//        String phone = "";
+//        StoreService instance = new StoreService();
+//        instance.createStore(storeID, name, address, city, phone);
+//    }
     
 }

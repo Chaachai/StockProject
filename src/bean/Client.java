@@ -5,6 +5,7 @@
  */
 package bean;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Client implements Serializable {
     private String address;
     private String phone;
     @OneToMany(mappedBy = "client")
-    private List<Order> orders;
+    private List<Commande> commandes;
 
     public Client() {
     }
@@ -84,15 +85,15 @@ public class Client implements Serializable {
         this.phone = phone;
     }
 
-    public List<Order> getOrders() {
-        if (orders == null) {
-            orders = new ArrayList();
+    public List<Commande> getCommandes() {
+        if (commandes == null) {
+            commandes = new ArrayList();
         }
-        return orders;
+        return commandes;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override
