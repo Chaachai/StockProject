@@ -5,6 +5,8 @@
  */
 package service;
 
+import bean.Store;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,39 +19,39 @@ import static org.junit.Assert.*;
  * @author CHAACHAI Youssef <youssef.chaachai@gmail.com>
  */
 public class StoreServiceTest {
-    
+
     public StoreServiceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of initBD method, of class StoreService.
-     */
-    @Test
-    public void testInitBD() {
-        System.out.println("initBD");
-        StoreService instance = new StoreService();
-        instance.initBD();
-    }
-
-    /**
-     * Test of createStore method, of class StoreService.
-     */
+//    /**
+//     * Test of initBD method, of class StoreService.
+//     */
+//    @Test
+//    public void testInitBD() {
+//        System.out.println("initBD");
+//        StoreService instance = new StoreService();
+//        instance.initBD();
+//    }
+//
+//    /**
+//     * Test of createStore method, of class StoreService.
+//     */
 //    @Test
 //    public void testCreateStore() {
 //        System.out.println("createStore");
@@ -61,5 +63,18 @@ public class StoreServiceTest {
 //        StoreService instance = new StoreService();
 //        instance.createStore(storeID, name, address, city, phone);
 //    }
-    
+    /**
+     * Test of findByCriteria method, of class StoreService.
+     */
+    @Test
+    public void testFindByCriteria() {
+        System.out.println("findByCriteria");
+        String storeID = null;
+        String city = null;
+        String name = "Bellevue Square";
+        StoreService instance = new StoreService();
+        List<Store> result = instance.findByCriteria(storeID, city, name);
+        System.out.println(result);
+    }
+
 }

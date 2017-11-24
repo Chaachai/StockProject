@@ -5,12 +5,12 @@
  */
 package bean;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -27,8 +27,12 @@ public class Client implements Serializable {
     private String firstName;
     private String address;
     private String phone;
+    @ManyToOne
+    private FideliteeClient classe;
     @OneToMany(mappedBy = "client")
     private List<Commande> commandes;
+    @OneToMany(mappedBy = "client")
+    private List<Livraison> livraisons;
 
     public Client() {
     }
@@ -94,6 +98,28 @@ public class Client implements Serializable {
 
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
+    }
+
+    public FideliteeClient getClasse() {
+        if (classe == null) {
+            classe = new FideliteeClient();
+        }
+        return classe;
+    }
+
+    public void setClasse(FideliteeClient classe) {
+        this.classe = classe;
+    }
+
+    public List<Livraison> getLivraisons() {
+        if (livraisons == null) {
+            livraisons = new ArrayList();
+        }
+        return livraisons;
+    }
+
+    public void setLivraisons(List<Livraison> livraisons) {
+        this.livraisons = livraisons;
     }
 
     @Override

@@ -5,6 +5,8 @@
  */
 package service;
 
+import bean.Product;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,9 +39,9 @@ public class ProductServiceTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of CreateProduct method, of class ProductService.
-     */
+//    /**
+//     * Test of CreateProduct method, of class ProductService.
+//     */
 //    @Test
 //    public void testCreateProduct() {
 //        System.out.println("CreateProduct");
@@ -51,15 +53,30 @@ public class ProductServiceTest {
 //        int result = instance.createProduct(id, Name, unitPrice, idCategory);
 //        System.out.println(result);
 //    }
-
+//
+//    /**
+//     * Test of initDB method, of class ProductService.
+//     */
+//    @Test
+//    public void testInitDB() {
+//        System.out.println("initDB");
+//        ProductService instance = new ProductService();
+//        instance.initDB();
+//    }
     /**
-     * Test of initDB method, of class ProductService.
+     * Test of findByCriteria method, of class ProductService.
      */
     @Test
-    public void testInitDB() {
-        System.out.println("initDB");
+    public void testFindByCriteria() {
+        System.out.println("findByCriteria");
+        String productID = null;
+        String categoryID = null;
+        String name = null;
+        double maxPrice = 0.0;
+        double minPrice = 4000.0;
         ProductService instance = new ProductService();
-        instance.initDB();
+        List<Product> result = instance.findByCriteria(productID, categoryID, name, maxPrice, minPrice);
+        System.out.println(result);
     }
 
 }

@@ -31,6 +31,8 @@ public class Product implements Serializable {
     private List<Stock> stocks;
     @OneToMany(mappedBy = "product")
     private List<Commande> commandes;
+    @OneToMany(mappedBy = "product")
+    private List<LigneCommande> ligneCommandes;
 
     public Product() {
     }

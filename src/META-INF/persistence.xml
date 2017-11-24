@@ -6,11 +6,15 @@
     <class>bean.Store</class>
     <class>bean.Product</class>
     <class>bean.Client</class>
-    <class>bean.Bill</class>
     <class>bean.BillRow</class>
     <class>bean.User</class>
     <class>bean.Category</class>
     <class>bean.Commande</class>
+    <class>bean.LigneCommande</class>
+    <class>bean.LigneFacture</class>
+    <class>bean.Facture</class>
+    <class>bean.FideliteeClient</class>
+    <class>bean.Livraison</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Stock?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

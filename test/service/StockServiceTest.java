@@ -19,36 +19,36 @@ import static org.junit.Assert.*;
  * @author CHAACHAI Youssef <youssef.chaachai@gmail.com>
  */
 public class StockServiceTest {
-    
+
     public StockServiceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of initDB method, of class StockService.
-     */
-    @Test
-    public void testInitDB() {
-        System.out.println("initDB");
-        StockService instance = new StockService();
-        instance.initDB();
-    }
-
+//    /**
+//     * Test of initDB method, of class StockService.
+//     */
+//    @Test
+//    public void testInitDB() {
+//        System.out.println("initDB");
+//        StockService instance = new StockService();
+//        instance.initDB();
+//    }
+//
 //    /**
 //     * Test of addStock method, of class StockService.
 //     */
@@ -115,22 +115,6 @@ public class StockServiceTest {
 //    }
 //
 //    /**
-//     * Test of findByCriteria method, of class StockService.
-//     */
-//    @Test
-//    public void testFindByCriteria() {
-//        System.out.println("findByCriteria");
-//        String storeID = "";
-//        String productID = "";
-//        StockService instance = new StockService();
-//        List<Stock> expResult = null;
-//        List<Stock> result = instance.findByCriteria(storeID, productID);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
 //     * Test of deleteStock method, of class StockService.
 //     */
 //    @Test
@@ -161,20 +145,31 @@ public class StockServiceTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-//
-//    /**
-//     * Test of findByProduct method, of class StockService.
-//     */
+    /**
+     * Test of findByProduct method, of class StockService.
+     */
 //    @Test
 //    public void testFindByProduct() {
 //        System.out.println("findByProduct");
-//        String idProduct = "";
+//        String idProduct = "P01";
 //        StockService instance = new StockService();
-//        List<Stock> expResult = null;
 //        List<Stock> result = instance.findByProduct(idProduct);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//        System.out.println(result);
 //    }
-    
+    /**
+     * Test of findByCriteria method, of class StockService.
+     */
+    @Test
+    public void testFindByCriteria() {
+        System.out.println("findByCriteria");
+        String stockID = null;
+        String storeID = null;
+        String productID = null;
+        double maxQuantity = 0.0;
+        double minQuantity = 5000.0;
+        StockService instance = new StockService();
+        List<Stock> result = instance.findByCriteria(stockID, productID, storeID, maxQuantity, minQuantity);
+        System.out.println(result);
+    }
+
 }

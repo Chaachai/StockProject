@@ -6,6 +6,7 @@
 package service;
 
 import bean.Store;
+import java.util.List;
 
 /**
  *
@@ -40,5 +41,18 @@ public class StoreService extends AbstractFacade<Store>{
         create(store);
     }
     
+    public List<Store> findByCriteria(String storeID, String city, String name) {
+        String query = "SELECT s FROM Store s WHERE 1 = 1 ";
+        if (storeID != null) {
+            query += " AND s.id ='" + storeID + "'";
+        }
+        if (city != null) {
+            query += " AND s.city ='" + city + "'";
+        }
+        if (name != null) {
+            query += " AND s.name ='" + name + "'";
+        }
+        return getEntityManager().createQuery(query).getResultList();
+    }
     
 }

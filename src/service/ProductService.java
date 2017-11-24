@@ -7,6 +7,7 @@ package service;
 
 import bean.Category;
 import bean.Product;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,26 @@ public class ProductService extends AbstractFacade<Product> {
         create(pr);
         return 1;
 
+    }
+
+    public List<Product> findByCriteria(String productID, String categoryID, String name, double maxPrice, double minPrice) {
+        String query = "SELECT p FROM Product p WHERE 1 = 1 ";
+        if (productID != null) {
+            query += " AND p.id ='" + productID + "'";
+        }
+        if (categoryID != null) {
+            query += " AND p.category.id ='" + categoryID + "'";
+        }
+        if (name != null) {
+            query += " AND p.name ='" + name + "'";
+        }
+        if (maxPrice != 0) {
+            query += " AND p.unitPrice < " + maxPrice;
+        }
+        if (minPrice != 0) {
+            query += " AND p.unitPrice > " + minPrice;
+        }
+        return getEntityManager().createQuery(query).getResultList();
     }
 
 }

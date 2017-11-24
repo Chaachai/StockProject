@@ -80,13 +80,22 @@ public class StockService extends AbstractFacade<Stock> {
         }
     }
 
-    public List<Stock> findByCriteria(String storeID, String productID) {
-        String query = "SELECT s FROM Stock s WHERE 1=1";
+    public List<Stock> findByCriteria(String stockID, String productID, String storeID, double maxQuantity, double minQuantity) {
+        String query = "SELECT s FROM Stock s WHERE 1 = 1 ";
+        if (stockID != null) {
+            query += " AND s.id ='" + stockID + "'";
+        }
         if (storeID != null) {
             query += " AND s.store.id ='" + storeID + "'";
         }
         if (productID != null) {
             query += " AND s.product.id ='" + productID + "'";
+        }
+        if (maxQuantity != 0) {
+            query += " AND s.quantity < " + maxQuantity;
+        }
+        if (minQuantity != 0) {
+            query += " AND s.quantity > " + minQuantity;
         }
         return getEntityManager().createQuery(query).getResultList();
     }
@@ -119,11 +128,6 @@ public class StockService extends AbstractFacade<Stock> {
             return globalQuantity;
         }
 
-    }
-
-    public List<Stock> findByProduct(String idProduct) {
-        return getEntityManager().createQuery("SELECT s FROM Stock s "
-                + "WHERE s.product.id = '" + idProduct + "'").getResultList();
     }
 
 }

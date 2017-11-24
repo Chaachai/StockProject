@@ -6,11 +6,14 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,13 +26,13 @@ public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private double quantity;
-    private String orderDate;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String dateCommande;
     private double totalPrice;
     @ManyToOne
     private Client client;
-    @ManyToOne
-    private Product product;
+    @OneToMany(mappedBy = "commande")
+    private List<LigneCommande> ligneCommandes;
 
     public Commande() {
     }
@@ -38,10 +41,9 @@ public class Commande implements Serializable {
         this.id = id;
     }
 
-    public Commande(String id, double quantity, String orderDate, double totalPrice) {
+    public Commande(String id, String dateCommande, double totalPrice) {
         this.id = id;
-        this.quantity = quantity;
-        this.orderDate = orderDate;
+        this.dateCommande = dateCommande;
         this.totalPrice = totalPrice;
     }
 
@@ -53,20 +55,12 @@ public class Commande implements Serializable {
         this.id = id;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public String getDateCommande() {
+        return dateCommande;
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
+    public void setDateCommande(String dateCommande) {
+        this.dateCommande = dateCommande;
     }
 
     public double getTotalPrice() {
@@ -88,15 +82,15 @@ public class Commande implements Serializable {
         this.client = client;
     }
 
-    public Product getProduct() {
-        if (product == null) {
-            product = new Product();
+    public List<LigneCommande> getLigneCommandes() {
+        if (ligneCommandes == null) {
+            ligneCommandes = new ArrayList();
         }
-        return product;
+        return ligneCommandes;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+        this.ligneCommandes = ligneCommandes;
     }
 
     @Override
@@ -121,7 +115,7 @@ public class Commande implements Serializable {
 
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", quantity=" + quantity + ", orderDate=" + orderDate + ", totalPrice=" + totalPrice + '}';
+        return "Commande{" + "id=" + id + ", dateCommande=" + dateCommande + ", totalPrice=" + totalPrice + '}';
     }
 
 }
