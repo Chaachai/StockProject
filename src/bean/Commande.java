@@ -7,6 +7,7 @@ package bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,8 +28,8 @@ public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    //@Temporal(javax.persistence.TemporalType.DATE)
-    private String dateCommande;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateCommande;
     private double totalPrice;
     @ManyToOne
     private Client client;
@@ -41,10 +43,10 @@ public class Commande implements Serializable {
         this.id = id;
     }
 
-    public Commande(String id, String dateCommande, double totalPrice) {
+    public Commande(String id, double totalPrice) {
         this.id = id;
-        this.dateCommande = dateCommande;
         this.totalPrice = totalPrice;
+        dateCommande = new Date();
     }
 
     public String getId() {
@@ -55,11 +57,11 @@ public class Commande implements Serializable {
         this.id = id;
     }
 
-    public String getDateCommande() {
+    public Date getDateCommande() {
         return dateCommande;
     }
 
-    public void setDateCommande(String dateCommande) {
+    public void setDateCommande(Date dateCommande) {
         this.dateCommande = dateCommande;
     }
 

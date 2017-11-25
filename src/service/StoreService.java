@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author Yougata
  */
-public class StoreService extends AbstractFacade<Store>{
-    
+public class StoreService extends AbstractFacade<Store> {
+
     public StoreService() {
         super(Store.class);
     }
-    
+
     public void initBD() {
         createStore("#01", "Downtown Seattle", "500 Pine Street", "Seattle", "+212506798456");
         createStore("#02", "Northgate", "401 N.E Northgate Way", "Seattle", "+212552369741");
@@ -30,7 +30,7 @@ public class StoreService extends AbstractFacade<Store>{
         createStore("#09", "Anchorage Rack", "680 E. Northern Lights Boulevard", "Anchorage", "+212567139824");
         createStore("#10", "Anchorage", "603 D Street", "Anchorage", "+212575364128");
     }
-    
+
     public void createStore(String storeID, String name, String address, String city, String phone) {
         Store store = new Store();
         store.setId(storeID);
@@ -40,7 +40,7 @@ public class StoreService extends AbstractFacade<Store>{
         store.setPhone(phone);
         create(store);
     }
-    
+
     public List<Store> findByCriteria(String storeID, String city, String name) {
         String query = "SELECT s FROM Store s WHERE 1 = 1 ";
         if (storeID != null) {
@@ -54,5 +54,5 @@ public class StoreService extends AbstractFacade<Store>{
         }
         return getEntityManager().createQuery(query).getResultList();
     }
-    
+
 }
